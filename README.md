@@ -1,1 +1,1 @@
-Bakcend for a srping boot chat app. Frontend: in development
+Bakcend for a spring boot chat app. Frontend: in development
