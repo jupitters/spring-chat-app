@@ -12,4 +12,8 @@ public class ChatController {
     public ChatMessage sendMessage(ChatMessage message) {
         return message;
     }
+
+    public String chat(){
+        return "chat";
+    }
 }
