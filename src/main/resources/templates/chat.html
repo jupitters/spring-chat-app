@@ -100,7 +100,7 @@
 
     function sendConfetti(){
         stompClient.send('/app/confetti', {}, JSON.stringify({
-            tipo: 'CONFETTI'
+            type: 'CONFETTI'
         }));
     }
 
