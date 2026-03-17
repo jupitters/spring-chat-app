@@ -24,7 +24,7 @@
             </div>
         </div>
         <div>
-            <button onclick="enviarConfete()">CONFETE</button>
+            <button onclick="sendConfetti()">CONFETE</button>
         </div>
     </div>
 
@@ -98,9 +98,9 @@
         });
     }
 
-    function enviarConfete(){
-        stompClient.send('/app/confete', {}, JSON.stringify({
-            tipo: 'CONFETE'
+    function sendConfetti(){
+        stompClient.send('/app/confetti', {}, JSON.stringify({
+            tipo: 'CONFETTI'
         }));
     }
 
