@@ -44,7 +44,7 @@
                 showMessage(JSON.parse(message.body));
             });
             stompClient.subscribe('/topic/confete', function () {
-                confete(); // chama a animação em TODO MUNDO
+                confetti();
             });
         });
     }
@@ -69,8 +69,7 @@
         document.getElementById('message-input').value = '';
     }
 
-    function confete(){
-        // 🎉 Confete contínuo por 2 segundos
+    function confetti(){
         const duration = 2000;
         const end = Date.now() + duration;
 
@@ -89,7 +88,6 @@
             }
         })();
 
-        // 🚀 Alerta bonito
         Swal.fire({
             title: 'Sucesso!',
             text: 'Operação realizada com sucesso 🎉',
