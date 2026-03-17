@@ -6,6 +6,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Map;
+
 @Controller
 public class ChatController {
     @MessageMapping("/send-message")
@@ -17,5 +19,11 @@ public class ChatController {
     @GetMapping("/chat")
     public String chat(){
         return "chat";
+    }
+
+    @MessageMapping("/confete")
+    @SendTo("/topic/confete")
+    public Map<String, String> enviarConfete(Map<String, String> mensagem) {
+        return mensagem;
     }
 }
