@@ -45,7 +45,7 @@
             stompClient.subscribe('/topic/messages', function (message) {
                 showMessage(JSON.parse(message.body));
             });
-            stompClient.subscribe('/topic/confete', function () {
+            stompClient.subscribe('/topic/confetti', function () {
                 confetti();
             });
             stompClient.subscribe('/topic/audio', function () {
