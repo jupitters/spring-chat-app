@@ -46,7 +46,7 @@
                 showMessage(JSON.parse(message.body));
             });
             stompClient.subscribe('/topic/confetti', function () {
-                confetti();
+                showConfetti();
             });
             stompClient.subscribe('/topic/audio', function () {
                 tocarSom();
@@ -74,7 +74,7 @@
         document.getElementById('message-input').value = '';
     }
 
-    function confetti(){
+    function showConfetti(){
         const duration = 2000;
         const end = Date.now() + duration;
 
