@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
     <div class="container mt-4">
@@ -25,9 +26,10 @@
         </div>
         <div>
             <button onclick="sendConfetti()">CONFETE</button>
+            <button onclick="sendAudio()">🔊 Ativar som</button>
         </div>
     </div>
-
+    <audio id="som-confete" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3"></audio>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
@@ -45,6 +47,9 @@
             });
             stompClient.subscribe('/topic/confete', function () {
                 confetti();
+            });
+            stompClient.subscribe('/topic/audio', function () {
+                tocarSom();
             });
         });
     }
@@ -101,6 +106,28 @@
             type: 'CONFETTI'
         }));
     }
+
+    function sendAudio(){
+        stompClient.send('/app/audio', {}, JSON.stringify({
+            type: 'AUDIO'
+        }));
+    }
+
+    // function tocarSom() {
+    //     const audio = document.getElementById("som-confete");
+    //     audio.currentTime = 0;
+    //     audio.play().catch(() => {
+    //         console.log("Som bloqueado pelo navegador");
+    //     });
+    // }
+
+    document.body.addEventListener('click', () => {
+        const audio = document.getElementById("som-confete");
+        audio.play().then(() => {
+            audio.pause();
+            audio.currentTime = 0;
+        }).catch(() => {});
+    }, { once: true });
 
     document.getElementById('send-message').onclick = sendMessage;
     window.onload = connect;

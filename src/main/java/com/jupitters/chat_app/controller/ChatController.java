@@ -21,9 +21,11 @@ public class ChatController {
         return "chat";
     }
 
-    @MessageMapping("/confete")
-    @SendTo("/topic/confete")
-    public Map<String, String> enviarConfete(Map<String, String> mensagem) {
-        return mensagem;
+    @MessageMapping("/confetti")
+    @SendTo("/topic/confetti")
+    public Map<String, String> sendConfetti(Map<String, String> message) {
+        return message;
     }
+
+
 }
