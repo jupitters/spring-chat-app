@@ -27,9 +27,9 @@ public class ChatController {
         return message;
     }
 
-    @MessageMapping("/confetti")
-    @SendTo("/topic/confetti")
-    public Map<String, String> sendConfetti(Map<String, String> message) {
+    @MessageMapping("/audio")
+    @SendTo("/topic/audio")
+    public Map<String, String> sendAudio(Map<String, String> message) {
         return message;
     }
 }
