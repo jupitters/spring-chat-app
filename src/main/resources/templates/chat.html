@@ -80,13 +80,13 @@
     }
 
     function showConfetti(){
-        const duration = 2000;
+        const duration = 1000;
         const end = Date.now() + duration;
 
         (function frame() {
             confetti({
-                particleCount: 6,
-                spread: 70,
+                particleCount: 10,
+                spread: 80,
                 origin: {
                     x: Math.random(),
                     y: Math.random() - 0.2
